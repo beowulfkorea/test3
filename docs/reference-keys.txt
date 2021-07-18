@@ -1,0 +1,16 @@
+the-simple-linear-regression-model
+load-data
+data-summary
+plot-data
+model
+variables
+estimation
+results
+b1-b2
+least-sqaures-prediction-one-time
+least-sqaures-prediction-one-time-1
+least-sqaures-prediction-one-time-2
+least-sqaures-prediction-1000-times
+least-sqaures-prediction-1000-times-1
+save-data
+references
