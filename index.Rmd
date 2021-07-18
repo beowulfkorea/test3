@@ -32,7 +32,7 @@ plot(food)         # Plot matrix
 ```
 
 
-## Model
+# Model
 
 $$ Y_{i} = \alpha + \beta X_{i} + e_{i} $$
 
@@ -135,7 +135,7 @@ y1
 sink()
 
 
-## References 
+# References 
 - Principles of Econometrics with R 
 <https://bookdown.org/ccolonescu/RPoE4/>
 - Principles of Econometrics  
