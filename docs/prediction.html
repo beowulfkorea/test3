@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Model | Chapter 4</title>
-  <meta name="description" content="2 Model | Chapter 4" />
+  <title>3 Prediction | Chapter 4</title>
+  <meta name="description" content="3 Prediction | Chapter 4" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Model | Chapter 4" />
+  <meta property="og:title" content="3 Prediction | Chapter 4" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Model | Chapter 4" />
+  <meta name="twitter:title" content="3 Prediction | Chapter 4" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="prediction.html"/>
+<link rel="prev" href="model.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,49 +172,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Model</h1>
-<p><span class="math display">\[ Y_{i} = \alpha + \beta X_{i} + e_{i} \]</span></p>
-<div id="variables" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Variables</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="model.html#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> food[,<span class="dv">2</span>]   <span class="co"># Income</span></span>
-<span id="cb7-2"><a href="model.html#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> food[,<span class="dv">1</span>]   <span class="co"># Food Expenditure</span></span></code></pre></div>
+<div id="prediction" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Prediction</h1>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="prediction.html#cb15-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb15-2"><a href="prediction.html#cb15-2" aria-hidden="true" tabindex="-1"></a>sde <span class="ot">&lt;-</span> <span class="fl">89.52</span></span>
+<span id="cb15-3"><a href="prediction.html#cb15-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> b1<span class="sc">+</span>b2<span class="sc">*</span>x<span class="sc">+</span><span class="fu">rnorm</span>(N, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span>sde)</span>
+<span id="cb15-4"><a href="prediction.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="prediction.html#cb15-5" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb15-6"><a href="prediction.html#cb15-6" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(y1, y)</span></code></pre></div>
+<div id="least-sqaures-prediction-one-time" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Least sqaures prediction (one time)</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="prediction.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(y1, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>,</span>
+<span id="cb16-2"><a href="prediction.html#cb16-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&#39;Income&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Food Expenditure&#39;</span>, </span>
+<span id="cb16-3"><a href="prediction.html#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span><span class="st">&#39;Prediction N=1 &#39;</span>)</span></code></pre></div>
+<p><img src="test3_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
-<div id="estimation" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Estimation</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="model.html#cb8-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span></code></pre></div>
+<div id="least-sqaures-prediction-one-time-1" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Least sqaures prediction (one time)</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="prediction.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(y2, <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>,</span>
+<span id="cb17-2"><a href="prediction.html#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&#39;Income&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Food Expenditure&#39;</span>, </span>
+<span id="cb17-3"><a href="prediction.html#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span><span class="st">&#39;Food Expenditure vs. Prediction &#39;</span>)</span></code></pre></div>
+<p><img src="test3_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
-<div id="results" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Results</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="model.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)  </span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ x)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -223.025  -50.816   -6.324   67.879  212.044 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   83.416     43.410   1.922   0.0622 .  
-## x             10.210      2.093   4.877 1.95e-05 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 89.52 on 38 degrees of freedom
-## Multiple R-squared:  0.385,  Adjusted R-squared:  0.3688 
-## F-statistic: 23.79 on 1 and 38 DF,  p-value: 1.946e-05</code></pre>
+<div id="least-sqaures-prediction-1000-times" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Least sqaures prediction (1,000 times)</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="prediction.html#cb18-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg)[[<span class="dv">1</span>]] </span>
+<span id="cb18-2"><a href="prediction.html#cb18-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg)[[<span class="dv">2</span>]]</span>
+<span id="cb18-3"><a href="prediction.html#cb18-3" aria-hidden="true" tabindex="-1"></a>yy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb18-4"><a href="prediction.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="prediction.html#cb18-5" aria-hidden="true" tabindex="-1"></a>trial <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb18-6"><a href="prediction.html#cb18-6" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb18-7"><a href="prediction.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(trial <span class="sc">&lt;=</span> trials) {</span>
+<span id="cb18-8"><a href="prediction.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  y3 <span class="ot">&lt;-</span> b1<span class="sc">+</span>b2<span class="sc">*</span>x<span class="sc">+</span><span class="fu">rnorm</span>(N, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span>sde)</span>
+<span id="cb18-9"><a href="prediction.html#cb18-9" aria-hidden="true" tabindex="-1"></a>  yy <span class="ot">&lt;-</span> <span class="fu">rbind</span>(yy, <span class="fu">t</span>(y3))</span>
+<span id="cb18-10"><a href="prediction.html#cb18-10" aria-hidden="true" tabindex="-1"></a>  trial <span class="ot">&lt;-</span> trial <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-11"><a href="prediction.html#cb18-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="b1-b2" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> b1, b2</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="model.html#cb11-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg)[[<span class="dv">1</span>]] </span>
-<span id="cb11-2"><a href="model.html#cb11-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg)[[<span class="dv">2</span>]]</span>
-<span id="cb11-3"><a href="model.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="model.html#cb11-4" aria-hidden="true" tabindex="-1"></a>b1</span></code></pre></div>
-<pre><code>## [1] 83.416</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="model.html#cb13-1" aria-hidden="true" tabindex="-1"></a>b2</span></code></pre></div>
-<pre><code>## [1] 10.20964</code></pre>
+<div id="least-sqaures-prediction-1000-times-1" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Least sqaures prediction (1,000 times)</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="prediction.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="fu">t</span>(yy), <span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>,</span>
+<span id="cb19-2"><a href="prediction.html#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&#39;Income&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Food Expenditure&#39;</span>, </span>
+<span id="cb19-3"><a href="prediction.html#cb19-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span><span class="st">&#39;Prediction N=1000 &#39;</span>)</span></code></pre></div>
+<p><img src="test3_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="save-data" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Save DATA</h2>
+<p>sink(‘ch4.out’)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="prediction.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Least sqaures prediction (one time) </span></span>
+<span id="cb20-2"><a href="prediction.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="prediction.html#cb20-3" aria-hidden="true" tabindex="-1"></a>y1</span></code></pre></div>
+<pre><code>##  [1] 162.9722 191.0360 176.9593 209.2242 154.5628 266.7540 395.6777 394.9843
+##  [9] 334.6304 171.4583 220.0513 149.2295 299.2434 430.9475 231.5970 261.7586
+## [17] 318.8501 166.0668 223.2281 292.3495 295.8618 321.5786 355.0641 351.6161
+## [25] 254.4943 328.8661 386.3243 269.1139 391.5898 341.6538 279.6955 292.3067
+## [33] 381.5517 260.0695 303.7820 427.7983 382.4253 448.5608 460.6265 345.7585</code></pre>
+<p>sink()</p>
 </div>
 </div>
             </section>
@@ -222,8 +234,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="prediction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

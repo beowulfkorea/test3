@@ -69,7 +69,7 @@ b1
 b2
 ```
 
-## Least sqaures prediction (one time)  
+# Prediction   
 
 ```{r }
 N <- 40

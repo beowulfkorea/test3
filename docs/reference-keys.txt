@@ -14,3 +14,5 @@ least-sqaures-prediction-1000-times
 least-sqaures-prediction-1000-times-1
 save-data
 references
+prediction-one-time
+prediction
